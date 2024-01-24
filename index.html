@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="form.js"></script>
+</head>
+<body style="background-color:powderblue;">
+    <!-- <form onsubmit="return validate()" > -->
+    <form action="https://sheetdb.io/api/v1/u099lv95b9163" method="POST" id="sheetdb-form">
+        <label for="uname">username</label>
+        <label for="uname" style="color: red;">*</label>
+        <input type="text" name="data[username]" id="uname" class="form-control"><br>
+        <span id="msg" style="color: red;"></span><br>
+        <label for="email">email</label>
+        <label for="email" style="color: red;">*</label>
+        <input type="text" name="data[email]" id="email" class="form-control"><br>
+        <label for="phno">phone</label>
+        <label for="phno" style="color: red;">*</label>
+        <input type="text" name="data[phno]" id="phno" class="form-control"><br>
+        <span id="msg1" style="color: red;"></span><br>
+
+        <!-- <input type="submit" class="form-control"> -->
+
+        <input type="submit" class="btn btn-primary">
+
+        <!-- <input type="submit" class="btn btn-danger"> -->
+        <!-- <input type="submit" class="btn btn-success"> -->
+        <script>
+            var form=document.getElementById("sheetdb-form")
+            form.addEventListener("submit",e=>{
+                e.preventDefault();
+                fetch(form.action,{
+                    method:"POST",
+                    body:new FormData(document.getElementById("sheetdb-form")),
+                }).then((html)=>{
+                    window.open('formmsg.html','_blank');
+                });
+            })
+
+        </script>
+    </form>
+</body>
+</html>
